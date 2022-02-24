@@ -1,6 +1,7 @@
 ﻿## 사용기술
 
 - NODE JS
+- EJS
 - DB(MySQL)
 - morgan
 - RDS(AWS)
