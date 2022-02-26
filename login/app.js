@@ -1,18 +1,18 @@
+//모듈
 const express = require("express");
 const app = express();
+
+const POST = 3000;
+
+// 라우팅
+const home = require("./routes/home");
 
 //앱 세팅
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("home/index");
-});
+app.use("/", home); // use => 미들웨어 등록해주는 메서드
 
-app.get("/login", (req, res) => {
-  res.render("home/login");
-});
-
-app.listen(3000, function () {
+app.listen(POST, function () {
   console.log("서버 가동");
 });
