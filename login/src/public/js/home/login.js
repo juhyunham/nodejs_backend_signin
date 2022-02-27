@@ -1,3 +1,5 @@
 "use strict";
 
-console.log("hi~ 여기는 login page입니다!");
+console.log("hi~");
+console.log("bye");
+console.log("awesome");
