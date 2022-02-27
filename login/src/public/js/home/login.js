@@ -10,11 +10,13 @@ const login = () => {
     pw: pw.value,
   };
 
+  console.log(JSON.stringify(req));
+
   fetch("/login", {
     method: "POST",
-		header: {
-			"Content-type": "application/json"
-		}
+    headers: {
+      "Content-type": "application/json",
+    },
     body: JSON.stringify(req),
   });
 };
