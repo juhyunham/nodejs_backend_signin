@@ -10,9 +10,28 @@ const output = {
   },
 };
 
+const userStorage = require("../../models/UserStorage");
+
 const process = {
   login: (req, res) => {
-    console.log(req.body);
+    const id = req.body.id;
+    const pw = req.body.pw;
+
+    const users = userStorage.getUsers("id", "pw");
+
+    if (users.id.includes(id)) {
+      const idx = users.id.indexOf(id);
+
+      const response = {};
+      if (users.psword[idx] === pw) {
+        response.success = true;
+        return res.json(response);
+      }
+    }
+
+    response.success = false;
+    response.msg = "로그인에 실패하셨습니다.";
+    return res.json(response);
   },
 };
 

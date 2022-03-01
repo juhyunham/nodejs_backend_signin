@@ -4,13 +4,13 @@ const id = document.querySelector("#id");
 const pw = document.querySelector("#psword");
 const loginBtn = document.querySelector("#loginButton");
 
-const login = () => {
+loginBtn.addEventListener("click", login);
+
+function login() {
   const req = {
     id: id.value,
     pw: pw.value,
   };
-
-  console.log(JSON.stringify(req));
 
   fetch("/login", {
     method: "POST",
@@ -18,7 +18,16 @@ const login = () => {
       "Content-type": "application/json",
     },
     body: JSON.stringify(req),
-  });
-};
-
-loginBtn.addEventListener("click", login);
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) {
+        location.href = "/";
+      } else {
+        alert(res.alert);
+      }
+    })
+    .catch((err) => {
+      console.error(new Error("로그인 후 에러 발생"));
+    });
+}
